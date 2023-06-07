@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 3</title>
+    <link rel="stylesheet" href="styles.css" class="css">
+</head>
+<body>
+    <h1>AppendChild</h1>
+      
+    <div id="form">
+      <label for="inserir-texto">Texto:</label>
+      <input type="texto" id="inserir-texto">
+      <br>
+  
+      <label>Cores:</label>
+      <label for="cor-vermelha"><input type="radio" name="cor" id="cor-vermelha" value="red"> Vermelho</label>
+      <label for="cor-verde"><input type="radio" name="cor" id="cor-verde" value="green"> Verde</label>
+      <label for="cor-azul"><input type="radio" name="cor" id="cor-azul" value="blue"> Azul</label>
+      <br>
+  
+      <button id="adicionar">Acrescentar</button>
+    </div>
+  
+    <div id="items-lista">
+      <h2>Itens Adicionados:</h2>
+      <ul id="list"></ul>
+    </div>
+
+    <a href="../index.html">Voltar</a>
+  
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var adicionarb = document.getElementById('adicionar');
+        adicionarb.addEventListener('click', addItemToList);
+      });
+  
+      function addItemToList() {
+        var inserirTexto = document.getElementById('inserir-texto');
+        var inserirCor = document.getElementsByName('cor');
+  
+        var selecionarCor;
+        for (var i = 0; i < inserirCor.length; i++) {
+          if (inserirCor[i].checked) {
+            selecionarCor = inserirCor[i].value;
+            break;
+          }
+        }
+  
+        var items_lista = document.createElement('li');
+        items_lista.className = 'item';
+        items_lista.textContent = inserirTexto.value;
+        items_lista.style.color = selecionarCor;
+  
+        var list = document.getElementById('list');
+        list.appendChild(items_lista);
+  
+        inserirTexto.value = '';
+        inserirCor[0].checked = true;
+      }
+    </script>
+</body>
+</html>

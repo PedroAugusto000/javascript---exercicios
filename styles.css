@@ -1,0 +1,16 @@
+.links {
+    max-width: 175px;
+    margin: 0 auto;
+    padding: 25px;
+    border: 1px solid gray;
+    border-radius: 20px;
+}
+
+a {
+    color: gray;
+    font-size: 22px;
+}
+
+h1 {
+    text-align: center
+}

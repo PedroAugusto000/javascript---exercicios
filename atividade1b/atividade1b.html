@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de média</title>
+  <link rel="stylesheet" href="style.css" class="css">
+</head>
+<body>
+
+  <div class="calculadora">
+
+    <h1>Calculadora de média aritmética para notas</h1>
+    <label for="nota1">Informe a primeira nota: </label>
+    <input type="text" id="nota1"><br> <br>
+    <label for="nota2">Informe a segunda nota: </label>
+    <input type="text" id="nota2"><br> <br>
+
+    <button onclick="calcularMedia()">Calcular</button>
+
+    <div id="resultado"> </div>
+
+  </div>
+  <a href="../index.html">Voltar</a>
+
+    <script>
+
+        function calcularMedia() {
+          //Declaração de variáveis
+            var nota1 = parseFloat(document.getElementById('nota1').value);
+            var nota2 = parseFloat(document.getElementById('nota2').value);
+          //Processamento dos dados recebidos
+            var media = (nota1 + nota2) / 2;
+            var resultadoElement = document.getElementById('resultado');
+
+          //Caso nenhum valor seja inserido e clique no botão de calcular
+            if (isNaN(media)) {
+                resultadoElement.innerText = 'Por favor, insira valores numéricos.';
+                resultadoElement.style.color = 'black';
+            } else {
+
+              //Aparecer o valor da média em  valores decimais
+              resultadoElement.innerText = 'Média: ' + media.toFixed(2);
+
+              //Cores para aprovado ou reprovado
+                if (media >= 6) {
+                    resultadoElement.style.color = 'blue';
+                    resultadoElement.innerText += ' - Aprovado';
+                } else {
+                    resultadoElement.style.color = 'red';
+                    resultadoElement.innerText += ' - Reprovado';
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
